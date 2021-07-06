@@ -53,11 +53,11 @@ app.get("/players/", async (request, response) => {
 //API 2
 app.post("/players/", async (request, response) => {
   const playerDetails = request.body;
-  const { player_id, player_name, jersey_number, role } = playerDetails;
+  const { playerName, jerseyNumber, role } = playerDetails;
   const addPlayerDetails = `
   insert into cricket_team(player_name, jersey_number, role )
   values
-  ('${player_name}',${jersey_number},'${role}'),`;
+  ('${playerName}',${jerseyNumber},'${role}');`;
   const player = await db.run(addPlayerDetails);
   response.send("Player Added to Team");
 });
@@ -66,8 +66,9 @@ app.post("/players/", async (request, response) => {
 app.get("/players/:playerId/", async (request, response) => {
   const { playerId } = request.params;
   const getPlayer = `
-  select * from cricket_team where player_id=${playerId}`;
+  select * from cricket_team where player_id=${playerId};`;
   const playerDetails = await db.get(getPlayer);
+
   response.send(convertDbObjectToResponseObject(playerDetails));
 });
 

@@ -1,0 +1,33 @@
+GET http://localhost:3030/players/
+###
+
+//API 2
+POST http://localhost:3030/players/
+Content-Type: application/json
+
+{
+    "playerName":"Trilochan",
+    "jerseyNumber":50,
+    "role":"Batsmen"
+}
+###
+
+//API 3
+
+GET http://localhost:3030/players/1/
+
+###
+//API 4
+put http://localhost:3030/players/2/
+Content-Type: application/json
+
+{
+    "player_name":"Reddy",
+    "jersey_number":52,
+    "role":"Allrounder"
+}
+###
+
+//API 5
+delete http://localhost:3030/players/3/
+
